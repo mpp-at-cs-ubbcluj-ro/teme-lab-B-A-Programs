@@ -119,3 +119,39 @@
 11 Mar 2025 17:13:49,203 TRACE MPP.JdbcUtils 48 getConnection - Enter
 11 Mar 2025 17:13:49,203 TRACE MPP.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@82de64a)
 11 Mar 2025 17:13:49,204 TRACE MPP.CarsDBRepository 45 findByManufacturer - Exit with([Id=3 Tesla Model S 2019, Id=4 Tesla Model S 2019])
+11 Mar 2025 17:33:05,416 INFO  MPP.CarsDBRepository 18 <init> - Initializing CarsDBRepository with properties: {jdbc.url=jdbc:sqlite:D:/Projects/An 2/MPP/lab3/lab3.sqlite} 
+11 Mar 2025 17:33:05,423 TRACE MPP.CarsDBRepository 79 add - Enter saving taskId=0 Tesla Model S 2019 
+11 Mar 2025 17:33:05,423 TRACE MPP.JdbcUtils 48 getConnection - Enter
+11 Mar 2025 17:33:05,423 TRACE MPP.JdbcUtils 25 getNewConnection - Enter
+11 Mar 2025 17:33:05,423 INFO  MPP.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:D:/Projects/An 2/MPP/lab3/lab3.sqlite
+11 Mar 2025 17:33:05,423 INFO  MPP.JdbcUtils 31 getNewConnection - user: null
+11 Mar 2025 17:33:05,423 INFO  MPP.JdbcUtils 32 getNewConnection - pass: null
+11 Mar 2025 17:33:05,613 TRACE MPP.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@82de64a)
+11 Mar 2025 17:33:05,613 TRACE MPP.CarsDBRepository 87 add - Saved 1 instances
+11 Mar 2025 17:33:05,613 TRACE MPP.CarsDBRepository 92 add - Exit
+11 Mar 2025 17:33:05,613 TRACE MPP.CarsDBRepository 116 findAll - Enter
+11 Mar 2025 17:33:05,613 TRACE MPP.JdbcUtils 48 getConnection - Enter
+11 Mar 2025 17:33:05,629 TRACE MPP.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@82de64a)
+11 Mar 2025 17:33:05,630 TRACE MPP.CarsDBRepository 136 findAll - Exit with([Id=1 Dacia Sandero 2019, Id=2 Skoda Octavia 2020, Id=3 Tesla Model S 2019, Id=4 Tesla Model S 2019, Id=5 Tesla Model S 2019])
+11 Mar 2025 17:33:05,630 TRACE MPP.CarsDBRepository 24 findByManufacturer - Enter Finding cars by manufacturer: Tesla
+11 Mar 2025 17:33:05,630 TRACE MPP.JdbcUtils 48 getConnection - Enter
+11 Mar 2025 17:33:05,630 TRACE MPP.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@82de64a)
+11 Mar 2025 17:33:05,630 TRACE MPP.CarsDBRepository 45 findByManufacturer - Exit with([Id=3 Tesla Model S 2019, Id=4 Tesla Model S 2019, Id=5 Tesla Model S 2019])
+11 Mar 2025 17:33:11,911 INFO  MPP.CarsDBRepository 18 <init> - Initializing CarsDBRepository with properties: {jdbc.url=jdbc:sqlite:D:/Projects/An 2/MPP/lab3/lab3.sqlite} 
+11 Mar 2025 17:33:11,911 TRACE MPP.CarsDBRepository 79 add - Enter saving taskId=0 Tesla Model S 2019 
+11 Mar 2025 17:33:11,911 TRACE MPP.JdbcUtils 48 getConnection - Enter
+11 Mar 2025 17:33:11,911 TRACE MPP.JdbcUtils 25 getNewConnection - Enter
+11 Mar 2025 17:33:11,911 INFO  MPP.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:D:/Projects/An 2/MPP/lab3/lab3.sqlite
+11 Mar 2025 17:33:11,911 INFO  MPP.JdbcUtils 31 getNewConnection - user: null
+11 Mar 2025 17:33:11,911 INFO  MPP.JdbcUtils 32 getNewConnection - pass: null
+11 Mar 2025 17:33:12,086 TRACE MPP.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@82de64a)
+11 Mar 2025 17:33:12,098 TRACE MPP.CarsDBRepository 87 add - Saved 1 instances
+11 Mar 2025 17:33:12,102 TRACE MPP.CarsDBRepository 92 add - Exit
+11 Mar 2025 17:33:12,102 TRACE MPP.CarsDBRepository 116 findAll - Enter
+11 Mar 2025 17:33:12,102 TRACE MPP.JdbcUtils 48 getConnection - Enter
+11 Mar 2025 17:33:12,102 TRACE MPP.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@82de64a)
+11 Mar 2025 17:33:12,103 TRACE MPP.CarsDBRepository 136 findAll - Exit with([Id=1 Dacia Sandero 2019, Id=2 Skoda Octavia 2020, Id=3 Tesla Model S 2019, Id=4 Tesla Model S 2019, Id=5 Tesla Model S 2019, Id=6 Tesla Model S 2019])
+11 Mar 2025 17:33:12,103 TRACE MPP.CarsDBRepository 24 findByManufacturer - Enter Finding cars by manufacturer: Tesla
+11 Mar 2025 17:33:12,103 TRACE MPP.JdbcUtils 48 getConnection - Enter
+11 Mar 2025 17:33:12,103 TRACE MPP.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@82de64a)
+11 Mar 2025 17:33:12,103 TRACE MPP.CarsDBRepository 45 findByManufacturer - Exit with([Id=3 Tesla Model S 2019, Id=4 Tesla Model S 2019, Id=5 Tesla Model S 2019, Id=6 Tesla Model S 2019])
