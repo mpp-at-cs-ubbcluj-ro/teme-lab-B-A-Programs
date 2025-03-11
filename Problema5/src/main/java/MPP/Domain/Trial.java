@@ -1,13 +1,13 @@
 package MPP.Domain;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Trial extends Entity<Long> {
     private String name;
     private AgeGroup ageGroup;
-    private ArrayList<Child> enrolledChildren;
+    private List<Child> enrolledChildren;
 
-    public Trial(Long id, String name, AgeGroup ageGroup, ArrayList<Child> enrolledChildren) {
+    public Trial(Long id, String name, AgeGroup ageGroup, List<Child> enrolledChildren) {
         super(id);
         this.name = name;
         this.ageGroup = ageGroup;
@@ -30,11 +30,11 @@ public class Trial extends Entity<Long> {
         this.ageGroup = ageGroup;
     }
 
-    public ArrayList<Child> getEnrolledChildren() {
+    public List<Child> getEnrolledChildren() {
         return enrolledChildren;
     }
 
-    public void setEnrolledChildren(ArrayList<Child> enrolledChildren) {
+    public void setEnrolledChildren(List<Child> enrolledChildren) {
         this.enrolledChildren = enrolledChildren;
     }
 
