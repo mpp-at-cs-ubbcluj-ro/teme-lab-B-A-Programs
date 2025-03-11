@@ -1,0 +1,121 @@
+11 Mar 2025 16:45:39,029 INFO  MPP.CarsDBRepository 20 <init> - Initializing CarsDBRepository with properties: {} 
+11 Mar 2025 16:45:39,039 TRACE MPP.CarsDBRepository 62 findAll - Enter
+11 Mar 2025 16:45:39,040 TRACE MPP.JdbcUtils 48 getConnection - Enter
+11 Mar 2025 16:45:39,040 TRACE MPP.JdbcUtils 25 getNewConnection - Enter
+11 Mar 2025 16:45:39,040 INFO  MPP.JdbcUtils 30 getNewConnection - trying to connect to database ... null
+11 Mar 2025 16:45:39,040 INFO  MPP.JdbcUtils 31 getNewConnection - user: null
+11 Mar 2025 16:45:39,041 INFO  MPP.JdbcUtils 32 getNewConnection - pass: null
+11 Mar 2025 16:45:39,042 ERROR MPP.JdbcUtils 41 getNewConnection - java.sql.SQLException: The url cannot be null
+11 Mar 2025 16:45:39,043 TRACE MPP.JdbcUtils 57 getConnection - Exit
+11 Mar 2025 16:45:58,227 INFO  MPP.CarsDBRepository 20 <init> - Initializing CarsDBRepository with properties: {} 
+11 Mar 2025 16:45:58,230 TRACE MPP.CarsDBRepository 62 findAll - Enter
+11 Mar 2025 16:45:58,230 TRACE MPP.JdbcUtils 48 getConnection - Enter
+11 Mar 2025 16:45:58,231 TRACE MPP.JdbcUtils 25 getNewConnection - Enter
+11 Mar 2025 16:45:58,231 INFO  MPP.JdbcUtils 30 getNewConnection - trying to connect to database ... null
+11 Mar 2025 16:45:58,231 INFO  MPP.JdbcUtils 31 getNewConnection - user: null
+11 Mar 2025 16:45:58,231 INFO  MPP.JdbcUtils 32 getNewConnection - pass: null
+11 Mar 2025 16:45:58,232 ERROR MPP.JdbcUtils 41 getNewConnection - java.sql.SQLException: The url cannot be null
+11 Mar 2025 16:45:58,233 TRACE MPP.JdbcUtils 57 getConnection - Exit
+11 Mar 2025 17:01:50,412 INFO  MPP.CarsDBRepository 18 <init> - Initializing CarsDBRepository with properties: {} 
+11 Mar 2025 17:01:50,416 TRACE MPP.CarsDBRepository 116 findAll - Enter
+11 Mar 2025 17:01:50,417 TRACE MPP.JdbcUtils 48 getConnection - Enter
+11 Mar 2025 17:01:50,417 TRACE MPP.JdbcUtils 25 getNewConnection - Enter
+11 Mar 2025 17:01:50,417 INFO  MPP.JdbcUtils 30 getNewConnection - trying to connect to database ... null
+11 Mar 2025 17:01:50,417 INFO  MPP.JdbcUtils 31 getNewConnection - user: null
+11 Mar 2025 17:01:50,418 INFO  MPP.JdbcUtils 32 getNewConnection - pass: null
+11 Mar 2025 17:01:50,420 ERROR MPP.JdbcUtils 41 getNewConnection - java.sql.SQLException: The url cannot be null
+11 Mar 2025 17:01:50,421 TRACE MPP.JdbcUtils 57 getConnection - Exit
+11 Mar 2025 17:07:27,841 INFO  MPP.CarsDBRepository 18 <init> - Initializing CarsDBRepository with properties: {jdbc.url=D:ProjectsAn 2MAPlab3lab3.sqlite} 
+11 Mar 2025 17:07:27,844 TRACE MPP.CarsDBRepository 116 findAll - Enter
+11 Mar 2025 17:07:27,845 TRACE MPP.JdbcUtils 48 getConnection - Enter
+11 Mar 2025 17:07:27,845 TRACE MPP.JdbcUtils 25 getNewConnection - Enter
+11 Mar 2025 17:07:27,845 INFO  MPP.JdbcUtils 30 getNewConnection - trying to connect to database ... D:ProjectsAn 2MAPlab3lab3.sqlite
+11 Mar 2025 17:07:27,845 INFO  MPP.JdbcUtils 31 getNewConnection - user: null
+11 Mar 2025 17:07:27,846 INFO  MPP.JdbcUtils 32 getNewConnection - pass: null
+11 Mar 2025 17:07:27,858 ERROR MPP.JdbcUtils 41 getNewConnection - java.sql.SQLException: No suitable driver found for D:ProjectsAn 2MAPlab3lab3.sqlite
+11 Mar 2025 17:07:27,859 TRACE MPP.JdbcUtils 57 getConnection - Exit
+11 Mar 2025 17:08:41,560 INFO  MPP.CarsDBRepository 18 <init> - Initializing CarsDBRepository with properties: {jdbc.url=D://Projects//An 2//MAP//lab3//lab3.sqlite} 
+11 Mar 2025 17:08:41,563 TRACE MPP.CarsDBRepository 116 findAll - Enter
+11 Mar 2025 17:08:41,564 TRACE MPP.JdbcUtils 48 getConnection - Enter
+11 Mar 2025 17:08:41,564 TRACE MPP.JdbcUtils 25 getNewConnection - Enter
+11 Mar 2025 17:08:41,564 INFO  MPP.JdbcUtils 30 getNewConnection - trying to connect to database ... D://Projects//An 2//MAP//lab3//lab3.sqlite
+11 Mar 2025 17:08:41,564 INFO  MPP.JdbcUtils 31 getNewConnection - user: null
+11 Mar 2025 17:08:41,565 INFO  MPP.JdbcUtils 32 getNewConnection - pass: null
+11 Mar 2025 17:08:41,573 ERROR MPP.JdbcUtils 41 getNewConnection - java.sql.SQLException: No suitable driver found for D://Projects//An 2//MAP//lab3//lab3.sqlite
+11 Mar 2025 17:08:41,574 TRACE MPP.JdbcUtils 57 getConnection - Exit
+11 Mar 2025 17:11:34,576 INFO  MPP.CarsDBRepository 18 <init> - Initializing CarsDBRepository with properties: {jdbc.url=D://Projects//An 2//MAP//lab3//lab3.sqlite} 
+11 Mar 2025 17:11:34,579 TRACE MPP.CarsDBRepository 116 findAll - Enter
+11 Mar 2025 17:11:34,580 TRACE MPP.JdbcUtils 48 getConnection - Enter
+11 Mar 2025 17:11:34,580 TRACE MPP.JdbcUtils 25 getNewConnection - Enter
+11 Mar 2025 17:11:34,580 INFO  MPP.JdbcUtils 30 getNewConnection - trying to connect to database ... D://Projects//An 2//MAP//lab3//lab3.sqlite
+11 Mar 2025 17:11:34,580 INFO  MPP.JdbcUtils 31 getNewConnection - user: null
+11 Mar 2025 17:11:34,581 INFO  MPP.JdbcUtils 32 getNewConnection - pass: null
+11 Mar 2025 17:11:34,591 ERROR MPP.JdbcUtils 41 getNewConnection - java.sql.SQLException: No suitable driver found for D://Projects//An 2//MAP//lab3//lab3.sqlite
+11 Mar 2025 17:11:34,592 TRACE MPP.JdbcUtils 57 getConnection - Exit
+11 Mar 2025 17:11:38,730 INFO  MPP.CarsDBRepository 18 <init> - Initializing CarsDBRepository with properties: {jdbc.url=D://Projects//An 2//MAP//lab3//lab3.sqlite} 
+11 Mar 2025 17:11:38,733 TRACE MPP.CarsDBRepository 116 findAll - Enter
+11 Mar 2025 17:11:38,734 TRACE MPP.JdbcUtils 48 getConnection - Enter
+11 Mar 2025 17:11:38,734 TRACE MPP.JdbcUtils 25 getNewConnection - Enter
+11 Mar 2025 17:11:38,734 INFO  MPP.JdbcUtils 30 getNewConnection - trying to connect to database ... D://Projects//An 2//MAP//lab3//lab3.sqlite
+11 Mar 2025 17:11:38,735 INFO  MPP.JdbcUtils 31 getNewConnection - user: null
+11 Mar 2025 17:11:38,735 INFO  MPP.JdbcUtils 32 getNewConnection - pass: null
+11 Mar 2025 17:11:38,748 ERROR MPP.JdbcUtils 41 getNewConnection - java.sql.SQLException: No suitable driver found for D://Projects//An 2//MAP//lab3//lab3.sqlite
+11 Mar 2025 17:11:38,748 TRACE MPP.JdbcUtils 57 getConnection - Exit
+11 Mar 2025 17:12:07,524 INFO  MPP.CarsDBRepository 18 <init> - Initializing CarsDBRepository with properties: {jdbc.url=D:/Projects/An 2/MAP/lab3/lab3.sqlite} 
+11 Mar 2025 17:12:07,527 TRACE MPP.CarsDBRepository 116 findAll - Enter
+11 Mar 2025 17:12:07,528 TRACE MPP.JdbcUtils 48 getConnection - Enter
+11 Mar 2025 17:12:07,528 TRACE MPP.JdbcUtils 25 getNewConnection - Enter
+11 Mar 2025 17:12:07,528 INFO  MPP.JdbcUtils 30 getNewConnection - trying to connect to database ... D:/Projects/An 2/MAP/lab3/lab3.sqlite
+11 Mar 2025 17:12:07,529 INFO  MPP.JdbcUtils 31 getNewConnection - user: null
+11 Mar 2025 17:12:07,529 INFO  MPP.JdbcUtils 32 getNewConnection - pass: null
+11 Mar 2025 17:12:07,540 ERROR MPP.JdbcUtils 41 getNewConnection - java.sql.SQLException: No suitable driver found for D:/Projects/An 2/MAP/lab3/lab3.sqlite
+11 Mar 2025 17:12:07,541 TRACE MPP.JdbcUtils 57 getConnection - Exit
+11 Mar 2025 17:13:11,715 INFO  MPP.CarsDBRepository 18 <init> - Initializing CarsDBRepository with properties: {jdbc.url=jdbc:sqlite:D:/Projects/An 2/MAP/lab3/lab3.sqlite} 
+11 Mar 2025 17:13:11,718 TRACE MPP.CarsDBRepository 116 findAll - Enter
+11 Mar 2025 17:13:11,719 TRACE MPP.JdbcUtils 48 getConnection - Enter
+11 Mar 2025 17:13:11,719 TRACE MPP.JdbcUtils 25 getNewConnection - Enter
+11 Mar 2025 17:13:11,719 INFO  MPP.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:D:/Projects/An 2/MAP/lab3/lab3.sqlite
+11 Mar 2025 17:13:11,720 INFO  MPP.JdbcUtils 31 getNewConnection - user: null
+11 Mar 2025 17:13:11,720 INFO  MPP.JdbcUtils 32 getNewConnection - pass: null
+11 Mar 2025 17:13:12,240 TRACE MPP.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@ffaa6af)
+11 Mar 2025 17:13:12,263 TRACE MPP.CarsDBRepository 136 findAll - Exit with([Id=1 Dacia Sandero 2019, Id=2 Skoda Octavia 2020])
+11 Mar 2025 17:13:12,264 TRACE MPP.CarsDBRepository 24 findByManufacturer - Enter Finding cars by manufacturer: Tesla
+11 Mar 2025 17:13:12,264 TRACE MPP.JdbcUtils 48 getConnection - Enter
+11 Mar 2025 17:13:12,264 TRACE MPP.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@ffaa6af)
+11 Mar 2025 17:13:12,269 TRACE MPP.CarsDBRepository 45 findByManufacturer - Exit with([])
+11 Mar 2025 17:13:39,687 INFO  MPP.CarsDBRepository 18 <init> - Initializing CarsDBRepository with properties: {jdbc.url=jdbc:sqlite:D:/Projects/An 2/MAP/lab3/lab3.sqlite} 
+11 Mar 2025 17:13:39,700 TRACE MPP.CarsDBRepository 79 add - Enter saving taskId=0 Tesla Model S 2019 
+11 Mar 2025 17:13:39,700 TRACE MPP.JdbcUtils 48 getConnection - Enter
+11 Mar 2025 17:13:39,701 TRACE MPP.JdbcUtils 25 getNewConnection - Enter
+11 Mar 2025 17:13:39,701 INFO  MPP.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:D:/Projects/An 2/MAP/lab3/lab3.sqlite
+11 Mar 2025 17:13:39,701 INFO  MPP.JdbcUtils 31 getNewConnection - user: null
+11 Mar 2025 17:13:39,702 INFO  MPP.JdbcUtils 32 getNewConnection - pass: null
+11 Mar 2025 17:13:39,933 TRACE MPP.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@82de64a)
+11 Mar 2025 17:13:39,941 TRACE MPP.CarsDBRepository 87 add - Saved 1 instances
+11 Mar 2025 17:13:39,942 TRACE MPP.CarsDBRepository 92 add - Exit
+11 Mar 2025 17:13:39,943 TRACE MPP.CarsDBRepository 116 findAll - Enter
+11 Mar 2025 17:13:39,943 TRACE MPP.JdbcUtils 48 getConnection - Enter
+11 Mar 2025 17:13:39,944 TRACE MPP.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@82de64a)
+11 Mar 2025 17:13:39,947 TRACE MPP.CarsDBRepository 136 findAll - Exit with([Id=1 Dacia Sandero 2019, Id=2 Skoda Octavia 2020, Id=3 Tesla Model S 2019])
+11 Mar 2025 17:13:39,948 TRACE MPP.CarsDBRepository 24 findByManufacturer - Enter Finding cars by manufacturer: Tesla
+11 Mar 2025 17:13:39,949 TRACE MPP.JdbcUtils 48 getConnection - Enter
+11 Mar 2025 17:13:39,949 TRACE MPP.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@82de64a)
+11 Mar 2025 17:13:39,949 TRACE MPP.CarsDBRepository 45 findByManufacturer - Exit with([Id=3 Tesla Model S 2019])
+11 Mar 2025 17:13:48,937 INFO  MPP.CarsDBRepository 18 <init> - Initializing CarsDBRepository with properties: {jdbc.url=jdbc:sqlite:D:/Projects/An 2/MAP/lab3/lab3.sqlite} 
+11 Mar 2025 17:13:48,948 TRACE MPP.CarsDBRepository 79 add - Enter saving taskId=0 Tesla Model S 2019 
+11 Mar 2025 17:13:48,949 TRACE MPP.JdbcUtils 48 getConnection - Enter
+11 Mar 2025 17:13:48,950 TRACE MPP.JdbcUtils 25 getNewConnection - Enter
+11 Mar 2025 17:13:48,950 INFO  MPP.JdbcUtils 30 getNewConnection - trying to connect to database ... jdbc:sqlite:D:/Projects/An 2/MAP/lab3/lab3.sqlite
+11 Mar 2025 17:13:48,950 INFO  MPP.JdbcUtils 31 getNewConnection - user: null
+11 Mar 2025 17:13:48,951 INFO  MPP.JdbcUtils 32 getNewConnection - pass: null
+11 Mar 2025 17:13:49,188 TRACE MPP.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@82de64a)
+11 Mar 2025 17:13:49,196 TRACE MPP.CarsDBRepository 87 add - Saved 1 instances
+11 Mar 2025 17:13:49,197 TRACE MPP.CarsDBRepository 92 add - Exit
+11 Mar 2025 17:13:49,197 TRACE MPP.CarsDBRepository 116 findAll - Enter
+11 Mar 2025 17:13:49,198 TRACE MPP.JdbcUtils 48 getConnection - Enter
+11 Mar 2025 17:13:49,198 TRACE MPP.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@82de64a)
+11 Mar 2025 17:13:49,202 TRACE MPP.CarsDBRepository 136 findAll - Exit with([Id=1 Dacia Sandero 2019, Id=2 Skoda Octavia 2020, Id=3 Tesla Model S 2019, Id=4 Tesla Model S 2019])
+11 Mar 2025 17:13:49,203 TRACE MPP.CarsDBRepository 24 findByManufacturer - Enter Finding cars by manufacturer: Tesla
+11 Mar 2025 17:13:49,203 TRACE MPP.JdbcUtils 48 getConnection - Enter
+11 Mar 2025 17:13:49,203 TRACE MPP.JdbcUtils 57 getConnection - Exit with(org.sqlite.jdbc4.JDBC4Connection@82de64a)
+11 Mar 2025 17:13:49,204 TRACE MPP.CarsDBRepository 45 findByManufacturer - Exit with([Id=3 Tesla Model S 2019, Id=4 Tesla Model S 2019])
