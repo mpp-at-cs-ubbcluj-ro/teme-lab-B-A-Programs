@@ -1,6 +1,8 @@
 package MPP.Repository;
 
+import MPP.Domain.AgeGroup;
 import MPP.Domain.Child;
+import MPP.Domain.Trial;
 import MPP.Utils.JdbcUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -97,5 +99,42 @@ public class ChildDBRepository implements ChildRepository {
             logger.error(ex);
         }
         return children;
+    }
+
+    @Override
+    public Child findByCnp(String cnp) {
+        logger.traceEntry("Getting child by cnp: {}", cnp);
+        Connection conn = dbUtils.getConnection();
+        try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Child WHERE CNP = ?")) {
+            stmt.setString(1, cnp);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return new Child(rs.getLong("id"), rs.getString("CNP"), rs.getString("name"));
+                }
+            }
+        } catch (SQLException ex) {
+            logger.error(ex);
+        }
+        return null;
+    }
+
+    @Override
+    public List<Trial> getTrialsForChild(Child child) {
+        logger.traceEntry("Getting trials by child: {}", child);
+        Connection conn = dbUtils.getConnection();
+        List<Trial> trials = new ArrayList<>();
+        try (PreparedStatement stmt = conn.prepareStatement(
+                "SELECT * FROM Trial INNER JOIN Child_Trial CT on Trial.id = CT.trial_id WHERE CT.child_id = ?"
+        )) {
+            stmt.setLong(1, child.getId());
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    trials.add(new Trial(rs.getLong("id"), rs.getString("name"), AgeGroup.valueOf(rs.getString("age_group")), new ArrayList<>()));
+                }
+            }
+        } catch (SQLException ex) {
+            logger.error(ex);
+        }
+        return trials;
     }
 }
