@@ -1,9 +1,9 @@
 package MPP.Domain;
 
 public enum AgeGroup {
-    SIX_EIGHT("SixEight"),
-    NINE_ELEVEN("NineEleven"),
-    TWELVE_FIFTEEN("TwelveFifteen"),;
+    SIXEIGHT("SixEight"),
+    NINEELEVEN("NineEleven"),
+    TWELVEFIFTEEN("TwelveFifteen"),;
 
     private final String value;
 

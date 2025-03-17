@@ -75,7 +75,7 @@ public class TrialDBRepository implements TrialRepository {
             stmt.setLong(1, id);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    return new Trial(rs.getLong("id"), rs.getString("name"), AgeGroup.valueOf(rs.getString("age_group")), new ArrayList<>());
+                    return new Trial(rs.getLong("id"), rs.getString("name"), AgeGroup.valueOf(rs.getString("age_group").toUpperCase()), new ArrayList<>());
                 }
             }
         } catch (SQLException ex) {
@@ -92,7 +92,7 @@ public class TrialDBRepository implements TrialRepository {
         try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Trial")) {
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
-                    trials.add(new Trial(rs.getLong("id"), rs.getString("name"), AgeGroup.valueOf(rs.getString("age_group")), new ArrayList<>()));
+                    trials.add(new Trial(rs.getLong("id"), rs.getString("name"), AgeGroup.valueOf(rs.getString("age_group").toUpperCase()), new ArrayList<>()));
                 }
             }
         } catch (SQLException ex) {

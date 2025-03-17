@@ -1,8 +1,12 @@
+import MPP.Domain.AgeGroup;
 import MPP.Domain.Child;
+import MPP.Domain.Trial;
 import MPP.Repository.ChildDBRepository;
+import MPP.Repository.TrialDBRepository;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -15,12 +19,12 @@ public class Main {
             System.out.println("Cannot find bd.config "+e);
         }
 
-        ChildDBRepository childDBRepository = new ChildDBRepository(props);
-        childDBRepository.add(new Child(0L, "5131313020202", "Georgica"));
+        TrialDBRepository trialDBRepository = new TrialDBRepository(props);
+                trialDBRepository.add(new Trial(0L, "Crosetat", AgeGroup.NINEELEVEN, new ArrayList<Child>()));
 
-        List<Child> children = childDBRepository.getAll();
-        for (Child child : children) {
-            System.out.println("COPILLLL: " + child);
+        List<Trial> trials = trialDBRepository.getAll();
+        for (Trial trial : trials) {
+            System.out.println(trial);
         }
     }
 }
