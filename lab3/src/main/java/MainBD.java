@@ -21,8 +21,9 @@ public class MainBD {
         System.out.println("Toate masinile din db");
         for(Car car:carRepo.findAll())
             System.out.println(car);
-       String manufacturer="Tesla";
+        String manufacturer="Tesla";
         System.out.println("Masinile produse de "+manufacturer);
+        carRepo.update(3, new Car("Volkswagen", "Golf", 5));
         for(Car car:carRepo.findByManufacturer(manufacturer))
             System.out.println(car);
 
