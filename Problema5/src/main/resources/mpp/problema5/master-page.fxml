@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="mpp.problema5.Controllers.MasterController">
+    <Label text="Trials"/>
+    <TableView fx:id="trialTable">
+        <columns>
+            <TableColumn fx:id="trialNameColumn" text="Trial Name" minWidth="200"/>
+            <TableColumn fx:id="trialAgeGroupColumn" text="Age Group" minWidth="100"/>
+        </columns>
+    </TableView>
+
+    <Label text="Enrolled Children"/>
+    <TableView fx:id="childTable">
+        <columns>
+            <TableColumn fx:id="childNameColumn" text="Child Name" minWidth="200"/>
+            <TableColumn fx:id="childCNPColumn" text="CNP" minWidth="150"/>
+        </columns>
+    </TableView>
+
+    <Label text="Enroll a Child"/>
+    <HBox spacing="10">
+        <TextField fx:id="childNameField" promptText="Child Name"/>
+        <TextField fx:id="childCNPField" promptText="CNP"/>
+        <Button fx:id="enrollButton" text="Enroll Child"/>
+    </HBox>
+</VBox>

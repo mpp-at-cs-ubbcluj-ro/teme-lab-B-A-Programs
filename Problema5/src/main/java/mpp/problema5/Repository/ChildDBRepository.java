@@ -129,7 +129,7 @@ public class ChildDBRepository implements ChildRepository {
             stmt.setLong(1, child.getId());
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
-                    trials.add(new Trial(rs.getLong("id"), rs.getString("name"), AgeGroup.valueOf(rs.getString("age_group")), new ArrayList<>()));
+                    trials.add(new Trial(rs.getLong("id"), rs.getString("name"), AgeGroup.valueOf(rs.getString("age_group").toUpperCase()), new ArrayList<>()));
                 }
             }
         } catch (SQLException ex) {
