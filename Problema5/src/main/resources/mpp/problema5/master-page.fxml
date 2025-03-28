@@ -1,29 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 
-<VBox spacing="10" alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="mpp.problema5.Controllers.MasterController">
-    <Label text="Trials"/>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="931.0" prefWidth="415.0" spacing="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mpp.problema5.Controllers.MasterController">
+    <Button fx:id="logoutButton" mnemonicParsing="false" text="LogOut" />
+    <Label text="Trials" />
     <TableView fx:id="trialTable">
         <columns>
-            <TableColumn fx:id="trialNameColumn" text="Trial Name" minWidth="200"/>
-            <TableColumn fx:id="trialAgeGroupColumn" text="Age Group" minWidth="100"/>
+            <TableColumn fx:id="trialNameColumn" minWidth="200" text="Trial Name" />
+            <TableColumn fx:id="trialAgeGroupColumn" minWidth="100" text="Age Group" />
         </columns>
     </TableView>
 
-    <Label text="Enrolled Children"/>
+    <Label text="Enrolled Children" />
     <TableView fx:id="childTable">
         <columns>
-            <TableColumn fx:id="childNameColumn" text="Child Name" minWidth="200"/>
-            <TableColumn fx:id="childCNPColumn" text="CNP" minWidth="150"/>
+            <TableColumn fx:id="childNameColumn" minWidth="200" text="Child Name" />
+            <TableColumn fx:id="childCNPColumn" minWidth="150" text="CNP" />
         </columns>
     </TableView>
 
-    <Label text="Enroll a Child"/>
+    <Label text="Enroll a Child" />
     <HBox spacing="10">
-        <TextField fx:id="childNameField" promptText="Child Name"/>
-        <TextField fx:id="childCNPField" promptText="CNP"/>
-        <Button fx:id="enrollButton" text="Enroll Child"/>
+        <TextField fx:id="childNameField" promptText="Child Name" />
+        <TextField fx:id="childCNPField" promptText="CNP" />
+        <Button fx:id="enrollButton" text="Enroll Child" />
     </HBox>
 </VBox>

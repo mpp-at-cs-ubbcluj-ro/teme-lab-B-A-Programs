@@ -5,12 +5,15 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import mpp.problema5.Domain.Child;
 import mpp.problema5.Domain.Trial;
 import mpp.problema5.Services.EnrollmentService;
 import mpp.problema5.Services.TrialService;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class MasterController {
@@ -34,6 +37,8 @@ public class MasterController {
     private TextField childCNPField;
     @FXML
     private Button enrollButton;
+    @FXML
+    private Button logoutButton;
 
     private TrialService trialService;
     private EnrollmentService enrollmentService;
@@ -73,6 +78,13 @@ public class MasterController {
 
         // Enroll button action
         enrollButton.setOnAction(event -> handleEnrollChild());
+        logoutButton.setOnAction(event -> handleLogout());
+    }
+
+    private void handleLogout() {
+        // Get the current window and close it
+        Stage stage = (Stage) logoutButton.getScene().getWindow();
+        stage.close();
     }
 
     private void loadTrialData() {
@@ -81,9 +93,13 @@ public class MasterController {
 
     private void loadChildrenData(List<Trial> selectedTrials) {
         children.clear();
+        Set<Child> uniqueChildren = new HashSet<>();
+
         for (Trial trial : selectedTrials) {
-            children.addAll(trial.getEnrolledChildren());
+            uniqueChildren.addAll(trial.getEnrolledChildren());
         }
+
+        children.setAll(uniqueChildren);
     }
 
     private void handleEnrollChild() {
@@ -91,8 +107,8 @@ public class MasterController {
         String cnp = childCNPField.getText().trim();
         List<Trial> selectedTrials = trialTable.getSelectionModel().getSelectedItems();
 
-        if (name.isEmpty() || cnp.isEmpty()) {
-            showAlert("Input Error", "Child name and CNP cannot be empty.");
+        if (cnp.isEmpty()) {
+            showAlert("Input Error", "Child CNP cannot be empty.");
             return;
         }
         if (selectedTrials.isEmpty()) {
@@ -109,6 +125,11 @@ public class MasterController {
         // If child is already enrolled in a trial, he can be enrolled only in one more, so User should only select 1 trial
         if (enrollmentService.getChildEnrollmentsNumber(child) == 1 && selectedTrials.size() == 2) {
             showAlert("Selection Error", "Child can only be enrolled in one more trial.");
+            return;
+        }
+
+        if (enrollmentService.getChildEnrollmentsNumber(child) == 0 && name.isEmpty()) {
+            showAlert("Selection Error", "Child not in database please insert name.");
             return;
         }
 
