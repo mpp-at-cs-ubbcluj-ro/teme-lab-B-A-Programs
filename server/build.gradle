@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'server'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':domain')
+    implementation project(':repository')
+    implementation project(':services')
+    implementation project(path: ':networking')
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    runtimeOnly group: 'org.xerial', name: 'sqlite-jdbc', version: '3.49.1.0'
+}
+
+application{
+    mainClass='Main'
+}
+
+test {
+    useJUnitPlatform()
+}

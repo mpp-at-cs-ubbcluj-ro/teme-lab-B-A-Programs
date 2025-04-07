@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="dbmppconcurs" uuid="0fcaafca-73ef-43cf-a4af-33ddbb6c1968">
+    <data-source source="LOCAL" name="dbmppconcurs" uuid="01f83598-88d8-43f5-9c8e-616235f50802">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:D:\Projects\An 2\teme-lab-B-A-Programs\Problema5\dbmppconcurs.sqlite</jdbc-url>
+      <jdbc-url>jdbc:sqlite:D:\Projects\An 2\teme-lab-B-A-Programs\server\dbmppconcurs.sqlite</jdbc-url>
       <jdbc-additional-properties>
         <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />
       </jdbc-additional-properties>
