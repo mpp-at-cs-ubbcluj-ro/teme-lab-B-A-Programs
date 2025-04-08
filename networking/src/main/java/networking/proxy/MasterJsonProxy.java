@@ -48,7 +48,6 @@ public class MasterJsonProxy extends AbstractJsonProxy implements IMasterService
 			return;
 		}
 		if (response.getType() == ResponseType.ERROR) {
-//			closeConnection();
 			String err = response.getErrorMessage();
 			throw new Exception(err);
 		}
@@ -71,7 +70,6 @@ public class MasterJsonProxy extends AbstractJsonProxy implements IMasterService
 		sendRequest(req);
 		Response response = getResponse();
 		if (response.getType() == ResponseType.ERROR) {
-//			closeConnection();
 			String err = response.getErrorMessage();
 			throw new Exception(err);
 		}
@@ -84,7 +82,6 @@ public class MasterJsonProxy extends AbstractJsonProxy implements IMasterService
 		sendRequest(req);
 		Response response = getResponse();
 		if (response.getType() == ResponseType.ERROR) {
-//			closeConnection();
 			String err = response.getErrorMessage();
 			throw new Exception(err);
 		}
