@@ -50,15 +50,7 @@ public class TrialDBRepository implements TrialRepository {
     public Trial getById(Long id) {
         logger.traceEntry("Getting trial by id: {}", id);
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            // Load the trial entity
-            Trial trial = session.get(Trial.class, id);
-
-            // Trigger eager loading of enrolledChildren
-            if (trial != null) {
-                trial.getEnrolledChildren().size();  // Forces Hibernate to load the collection
-            }
-
-            return trial;
+            return session.get(Trial.class, id);
         }
     }
 
@@ -66,14 +58,7 @@ public class TrialDBRepository implements TrialRepository {
     public List<Trial> getAll() {
         logger.traceEntry("Getting all trials");
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            List<Trial> trials = session.createQuery("from Trial", Trial.class).getResultList();
-
-            for (Trial trial : trials) {
-                System.out.println(trial);
-                trial.getEnrolledChildren().size();  // Forces loading of enrolledChildren for each trial
-            }
-
-            return trials;
+            return session.createQuery("from Trial", Trial.class).getResultList();
         }
     }
 
