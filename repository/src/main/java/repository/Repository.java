@@ -1,10 +1,11 @@
 package repository;
 
-import domain.Entity;
+import domain.Identifiable;
 
+import java.io.Serializable;
 import java.util.List;
 
-public interface Repository<T extends Entity<ID>, ID> {
+public interface Repository<T extends Identifiable<ID>, ID extends Serializable> {
     T add(T var1);
 
     void delete(ID var1);

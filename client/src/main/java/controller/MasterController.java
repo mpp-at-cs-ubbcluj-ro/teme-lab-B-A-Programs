@@ -10,15 +10,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import domain.Child;
-import domain.Trial;
-import repository.TrialDBRepository;
 import services.IMasterService;
 import services.IObserver;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class MasterController implements IObserver {
     @FXML
@@ -154,7 +151,7 @@ public class MasterController implements IObserver {
 
         try {
             for (TrialDTO trial : selectedTrials) {
-                masterService.enrollChild(trial.getId(), new Child(0L, cnp, name));
+                masterService.enrollChild(trial.getId(), new Child(null, cnp, name));
             }
             showAlert("Success", "Child enrolled successfully.");
             childNameField.clear();

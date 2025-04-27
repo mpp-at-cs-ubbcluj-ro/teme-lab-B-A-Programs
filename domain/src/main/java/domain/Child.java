@@ -1,17 +1,25 @@
 package domain;
 
+import jakarta.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
-public class Child extends Entity<Long> {
+@Entity
+@Table(name = "Child")
+public class Child extends Identifiable<Long> {
     private String CNP;
     private String name;
+    private List<Trial> enrolledTrials;
+
+    public Child() {}
 
     public Child(Long id, String CNP, String name) {
-        super(id);
+        this.setId(id);
         this.CNP = CNP;
         this.name = name;
     }
 
+    @Column(name = "CNP", nullable = false, unique = true)
     public String getCNP() {
         return CNP;
     }
@@ -20,12 +28,22 @@ public class Child extends Entity<Long> {
         this.CNP = CNP;
     }
 
+    @Column(name = "name", nullable = false)
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @ManyToMany(mappedBy = "enrolledChildren")
+    public List<Trial> getEnrolledTrials() {
+        return enrolledTrials;
+    }
+
+    public void setEnrolledTrials(List<Trial> enrolledTrials) {
+        this.enrolledTrials = enrolledTrials;
     }
 
     @Override
@@ -38,14 +56,14 @@ public class Child extends Entity<Long> {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(CNP + getId());
+        return Objects.hash(CNP, this.getId()); // Fixed hashCode to use CNP and id
     }
 
     @Override
     public String toString() {
         return "Child{" +
-                "ID=" + getId() +
-                "CNP='" + CNP + '\'' +
+                "id=" + this.getId() +
+                ", CNP='" + CNP + '\'' +
                 ", name='" + name + '\'' +
                 '}';
     }

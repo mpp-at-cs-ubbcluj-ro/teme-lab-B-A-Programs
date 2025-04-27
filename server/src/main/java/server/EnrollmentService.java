@@ -32,7 +32,7 @@ public class EnrollmentService implements IEnrollmentService {
         Trial trial = trialRepository.getById(trialId);
         Child existingChild = childRepository.findByCnp(child.getCNP());
 
-        if (!isChildValidForTrial(child, trial.getAgeCategory())) {
+        if (!isChildValidForTrial(child, trial.getAgeGroup())) {
             throw new Exception("Child does not meet the age requirements for this trial.");
         }
 

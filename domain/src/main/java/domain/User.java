@@ -1,15 +1,22 @@
 package domain;
 
-public class User extends Entity<Long> {
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "User")
+public class User extends Identifiable<Long> {
     private String username;
     private String password;
 
+    public User() {}
+
     public User(Long id, String username, String password) {
-        super(id);
+        this.setId(id);
         this.username = username;
         this.password = password;
     }
 
+    @Column(name = "username", nullable = false, unique = true)
     public String getUsername() {
         return username;
     }
@@ -18,6 +25,7 @@ public class User extends Entity<Long> {
         this.username = username;
     }
 
+    @Column(name = "password", nullable = false)
     public String getPassword() {
         return password;
     }
@@ -28,8 +36,8 @@ public class User extends Entity<Long> {
 
     @Override
     public String toString() {
-        return "Administrator{" +
-                "id=" + getId() +
+        return "User{" +
+                "id=" + this.getId() +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';

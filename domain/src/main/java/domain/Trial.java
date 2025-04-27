@@ -1,19 +1,25 @@
 package domain;
 
+import jakarta.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
-public class Trial extends Entity<Long> {
+@Entity
+@Table(name = "Trial")
+public class Trial extends Identifiable<Long> {
     private String name;
     private AgeGroup ageGroup;
-    private List<Child> enrolledChildren;
+    private List<Child> enrolledChildren = new ArrayList<>();
 
-    public Trial(Long id, String name, AgeGroup ageGroup, List<Child> enrolledChildren) {
-        super(id);
+    public Trial() {}
+
+    public Trial(Long id, String name, AgeGroup ageGroup) {
+        this.setId(id);
         this.name = name;
         this.ageGroup = ageGroup;
-        this.enrolledChildren = enrolledChildren;
     }
 
+    @Column(name = "name", nullable = false)
     public String getName() {
         return name;
     }
@@ -22,14 +28,22 @@ public class Trial extends Entity<Long> {
         this.name = name;
     }
 
-    public AgeGroup getAgeCategory() {
+    @Enumerated(EnumType.STRING)
+    @Column(name = "age_group")
+    public AgeGroup getAgeGroup() {
         return ageGroup;
     }
 
-    public void setAgeCategory(AgeGroup ageGroup) {
+    public void setAgeGroup(AgeGroup ageGroup) {
         this.ageGroup = ageGroup;
     }
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinTable(
+            name = "Child_Trial",
+            joinColumns = @JoinColumn(name = "trial_id"),
+            inverseJoinColumns = @JoinColumn(name = "child_id")
+    )
     public List<Child> getEnrolledChildren() {
         return enrolledChildren;
     }
@@ -40,10 +54,10 @@ public class Trial extends Entity<Long> {
 
     @Override
     public String toString() {
-        return "Competition{" +
-                "id=" + getId() +
+        return "Trial{" +
+                "id=" + this.getId() +
                 ", name='" + name + '\'' +
-                ", ageCategory=" + ageGroup.toString() +
+                ", ageGroup=" + ageGroup +
                 '}';
     }
 }

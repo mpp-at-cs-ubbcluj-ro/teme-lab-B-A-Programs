@@ -30,10 +30,11 @@ public class TrialService implements ITrialService {
             for (Child child : trialChildren) {
                 childDTOs.add(new ChildDTO(child.getId(), child.getCNP(), child.getName(), childRepository.getTrialsForChild(child).size()));
             }
+            System.out.println(trial.getAgeGroup());
             trialDTOs.add(new TrialDTO(
                     trial.getId(),
                     trial.getName(),
-                    trial.getAgeCategory(),
+                    trial.getAgeGroup(),
                     childDTOs
             ));
         }

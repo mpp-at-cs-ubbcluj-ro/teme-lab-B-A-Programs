@@ -1,7 +1,6 @@
 package domain.DTO;
 
 import domain.AgeGroup;
-import domain.Entity;
 
 import java.util.List;
 
@@ -39,5 +38,14 @@ public class TrialDTO extends Entity<Long> {
 
     public void setEnrolledChildren(List<ChildDTO> enrolledChildren) {
         this.enrolledChildren = enrolledChildren;
+    }
+
+    @Override
+    public String toString() {
+        return "TrialDTO{" +
+                "name='" + name + '\'' +
+                ", ageGroup=" + ageGroup +
+                ", enrolledChildren=" + enrolledChildren +
+                '}';
     }
 }

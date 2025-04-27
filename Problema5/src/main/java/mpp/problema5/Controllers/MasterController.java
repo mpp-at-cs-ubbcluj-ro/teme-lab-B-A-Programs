@@ -120,7 +120,7 @@ public class MasterController {
             return;
         }
 
-        Child child = new Child(0L, cnp, name);
+        Child child = new Child(null, cnp, name);
 
         // If child is already enrolled in a trial, he can be enrolled only in one more, so User should only select 1 trial
         if (enrollmentService.getChildEnrollmentsNumber(child) == 1 && selectedTrials.size() == 2) {

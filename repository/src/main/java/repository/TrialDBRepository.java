@@ -5,152 +5,88 @@ import domain.Child;
 import domain.Trial;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.Session;
 
-import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 public class TrialDBRepository implements TrialRepository {
-    private JdbcUtils dbUtils;
     private static final Logger logger = LogManager.getLogger();
-
-    public TrialDBRepository(Properties props) {
-        logger.info("Initializing TrialDBRepository with properties: {}", props);
-        dbUtils = new JdbcUtils(props);
-    }
 
     @Override
     public Trial add(Trial trial) {
         logger.traceEntry("Adding trial: {}", trial);
-        Connection conn = dbUtils.getConnection();
-        try (PreparedStatement stmt = conn.prepareStatement("INSERT INTO Trial (name, age_group) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS)) {
-            stmt.setString(1, trial.getName());
-            stmt.setString(2, trial.getAgeCategory().toString());
-            int result = stmt.executeUpdate();
-            if (result > 0) {
-                try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
-                    if (generatedKeys.next()) {
-                        trial.setId(generatedKeys.getLong(1));
-                    }
-                }
-            }
-        } catch (SQLException ex) {
-            logger.error(ex);
+        HibernateUtil.getSessionFactory().inTransaction(session -> {
+            session.persist(trial);
+        });
+
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.createQuery("from Trial where id=(select max(id) from Trial)", Trial.class).uniqueResult();
         }
-        return trial;
     }
 
     @Override
     public void delete(Long id) {
         logger.traceEntry("Deleting trial with id: {}", id);
-        Connection conn = dbUtils.getConnection();
-        try (PreparedStatement stmt = conn.prepareStatement("DELETE FROM Trial WHERE id = ?")) {
-            stmt.setLong(1, id);
-            stmt.executeUpdate();
-        } catch (SQLException ex) {
-            logger.error(ex);
-        }
+        HibernateUtil.getSessionFactory().inTransaction(session -> {
+            Trial trial = session.createQuery("from Trial where id=?1", Trial.class)
+                    .setParameter(1, id)
+                    .uniqueResult();
+            if (trial != null) {
+                session.remove(trial);
+            }
+        });
     }
 
     @Override
     public void update(Trial trial, Long id) {
         logger.traceEntry("Updating trial with id: {}", id);
-        Connection conn = dbUtils.getConnection();
-        try (PreparedStatement stmt = conn.prepareStatement("UPDATE Trial SET name = ?, age_group = ? WHERE id = ?")) {
-            stmt.setString(1, trial.getName());
-            stmt.setString(2, trial.getAgeCategory().toString());
-            stmt.setLong(3, id);
-            stmt.executeUpdate();
-        } catch (SQLException ex) {
-            logger.error(ex);
-        }
+        HibernateUtil.getSessionFactory().inTransaction(session -> {
+            trial.setId(id);
+            session.merge(trial);
+        });
     }
 
     @Override
     public Trial getById(Long id) {
         logger.traceEntry("Getting trial by id: {}", id);
-        Connection conn = dbUtils.getConnection();
-        try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Trial WHERE id = ?")) {
-            stmt.setLong(1, id);
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
-                    ArrayList<Child> enrolledChildren = new ArrayList<>();
-                    try (PreparedStatement childStmt = conn.prepareStatement("SELECT child_id FROM Child_Trial WHERE trial_id = ?")) {
-                        childStmt.setLong(1, id);
-                        try (ResultSet childRs = childStmt.executeQuery()) {
-                            while (childRs.next()) {
-                                Long childId = childRs.getLong("child_id");
-                                try (PreparedStatement getChildStmt = conn.prepareStatement("SELECT * FROM Child WHERE id = ?")) {
-                                    getChildStmt.setLong(1, childId);
-                                    try (ResultSet childDataRs = getChildStmt.executeQuery()) {
-                                        if (childDataRs.next()) {
-                                            enrolledChildren.add(new Child(childDataRs.getLong("id"), childDataRs.getString("CNP"), childDataRs.getString("name")));
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            // Load the trial entity
+            Trial trial = session.get(Trial.class, id);
 
-                    return new Trial(rs.getLong("id"), rs.getString("name"),
-                            AgeGroup.valueOf(rs.getString("age_group").toUpperCase()), enrolledChildren);
-                }
+            // Trigger eager loading of enrolledChildren
+            if (trial != null) {
+                trial.getEnrolledChildren().size();  // Forces Hibernate to load the collection
             }
-        } catch (SQLException ex) {
-            logger.error(ex);
+
+            return trial;
         }
-        return null;
     }
 
     @Override
     public List<Trial> getAll() {
         logger.traceEntry("Getting all trials");
-        Connection conn = dbUtils.getConnection();
-        List<Trial> trials = new ArrayList<>();
-        try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Trial")) {
-            try (ResultSet rs = stmt.executeQuery()) {
-                while (rs.next()) {
-                    Long trialId = rs.getLong("id");
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            List<Trial> trials = session.createQuery("from Trial", Trial.class).getResultList();
 
-                    ArrayList<Child> enrolledChildren = new ArrayList<>();
-                    try (PreparedStatement childStmt = conn.prepareStatement("SELECT child_id FROM Child_Trial WHERE trial_id = ?")) {
-                        childStmt.setLong(1, trialId);
-                        try (ResultSet childRs = childStmt.executeQuery()) {
-                            while (childRs.next()) {
-                                Long childId = childRs.getLong("child_id");
-                                try (PreparedStatement getChildStmt = conn.prepareStatement("SELECT * FROM Child WHERE id = ?")) {
-                                    getChildStmt.setLong(1, childId);
-                                    try (ResultSet childDataRs = getChildStmt.executeQuery()) {
-                                        if (childDataRs.next()) {
-                                            enrolledChildren.add(new Child(childDataRs.getLong("id"), childDataRs.getString("CNP"), childDataRs.getString("name")));
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    trials.add(new Trial(rs.getLong("id"), rs.getString("name"),
-                            AgeGroup.valueOf(rs.getString("age_group").toUpperCase()), enrolledChildren));
-                }
+            for (Trial trial : trials) {
+                System.out.println(trial);
+                trial.getEnrolledChildren().size();  // Forces loading of enrolledChildren for each trial
             }
-        } catch (SQLException ex) {
-            logger.error(ex);
+
+            return trials;
         }
-        return trials;
     }
 
     @Override
     public void addChild(Long trialId, Child child) {
         logger.traceEntry("Enrolling child in trial: {}", child);
-        Connection conn = dbUtils.getConnection();
-        try (PreparedStatement stmt = conn.prepareStatement("INSERT INTO Child_Trial (child_id, trial_id) VALUES (?, ?)")) {
-            stmt.setLong(1, child.getId());
-            stmt.setLong(2, trialId);
-            stmt.executeUpdate();
-        } catch (SQLException ex) {
-            logger.error(ex);
-        }
+        HibernateUtil.getSessionFactory().inTransaction(session -> {
+            Trial trial = session.get(Trial.class, trialId);
+            Child childEntity = session.get(Child.class, child.getId());
+            if (trial != null && childEntity != null) {
+                trial.getEnrolledChildren().add(childEntity);
+                session.merge(trial);
+            }
+        });
     }
 }

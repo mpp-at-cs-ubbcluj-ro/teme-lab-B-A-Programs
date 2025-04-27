@@ -31,9 +31,9 @@ public class Main {
             System.out.println("Using default port: " + defaultServerPort);
         }
         System.out.println("Using server port " + serverPort);
-        UserRepository userRepository = new UserDBRepository(props);
-		ChildRepository childRepository = new ChildDBRepository(props);
-		TrialDBRepository trialRepository = new TrialDBRepository(props);
+        UserRepository userRepository = new UserDBRepository();
+		ChildRepository childRepository = new ChildDBRepository();
+		TrialDBRepository trialRepository = new TrialDBRepository();
         UserService userService = new UserService(userRepository);
         EnrollmentService enrollmentService = new EnrollmentService(childRepository, trialRepository);
         TrialService trialService = new TrialService(trialRepository, childRepository);

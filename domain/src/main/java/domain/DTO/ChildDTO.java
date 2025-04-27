@@ -1,7 +1,5 @@
 package domain.DTO;
 
-import domain.Entity;
-
 public class ChildDTO extends Entity<Long> {
     private String CNP;
     private String name;
