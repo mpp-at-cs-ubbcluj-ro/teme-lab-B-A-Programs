@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+.input {
+  @apply w-full p-2 border rounded focus:outline-none focus:ring;
+}
+
+.btn {
+  @apply text-white px-4 py-2 rounded hover:opacity-90 transition;
+}
+
