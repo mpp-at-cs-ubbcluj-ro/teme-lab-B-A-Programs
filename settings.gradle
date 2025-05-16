@@ -5,4 +5,5 @@ include 'services'
 include 'networking'
 include 'server'
 include 'client'
+include 'rest'
 
