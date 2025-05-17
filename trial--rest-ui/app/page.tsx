@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Trial } from "../types";
-import { getTrials } from "../api";
-import TrialForm from "../components/TrialForm";
-import TrialList from "../components/TrialList";
+import { Trial } from "@/types";
+import { getTrials } from "@/api";
+import TrialForm from "@/components/TrialForm";
+import TrialList from "@/components/TrialList";
+import { useWebSocket } from "@/hooks/useWebSocket";
 
 export default function Home() {
   const [trials, setTrials] = useState<Trial[]>([]);
@@ -17,6 +18,8 @@ export default function Home() {
   useEffect(() => {
     fetchTrials();
   }, []);
+
+  useWebSocket(fetchTrials);
 
   return (
     <main className="min-h-screen bg-gray-100 p-6">

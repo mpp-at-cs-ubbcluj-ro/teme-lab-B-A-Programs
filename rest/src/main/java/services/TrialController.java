@@ -4,10 +4,12 @@ import domain.Trial;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 import repository.TrialRepository;
 
 import java.util.Collection;
+import java.util.Map;
 
 @CrossOrigin
 @RestController
@@ -15,6 +17,9 @@ import java.util.Collection;
 public class TrialController {
     @Autowired
     TrialRepository trialRepository;
+
+    @Autowired
+    private SimpMessagingTemplate messagingTemplate;
 
     @GetMapping
     public Collection<Trial> get() {
@@ -32,7 +37,11 @@ public class TrialController {
     @PostMapping
     public ResponseEntity<?> add(@RequestBody Trial trial) {
         try {
-            return new ResponseEntity<>(trialRepository.add(trial), HttpStatus.OK);
+            Trial added = trialRepository.add(trial);
+            messagingTemplate.convertAndSend("/trials", Map.of(
+                    "event", "created"
+            ));
+            return new ResponseEntity<>(added, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -44,6 +53,9 @@ public class TrialController {
             return new ResponseEntity<>("Trial not found", HttpStatus.NOT_FOUND);
         try {
             trialRepository.update(trial, id);
+            messagingTemplate.convertAndSend("/trials", Map.of(
+                "event", "updated"
+            ));
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -55,6 +67,9 @@ public class TrialController {
         if (trialRepository.getById(id) == null)
             return HttpStatus.NOT_FOUND;
         trialRepository.delete(id);
+        messagingTemplate.convertAndSend("/trials", Map.of(
+            "event", "deleted"
+        ));
         return HttpStatus.OK;
     }
 }
